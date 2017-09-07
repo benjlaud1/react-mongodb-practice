@@ -27,7 +27,7 @@ class App extends Component {
           <div className="tile input">
             <p>Hello, please enter your name!</p>
             <form onSubmit={this.onSubmit} >
-              <input type="text" value={this.state.name} onChange={this.onNameChange} />
+              <input type="text" value={this.state.name} onChange={this.onNameChange.bind(this)} />
               <input type="submit" value="Add Name" />
             </form>
           </div>
