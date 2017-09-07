@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {name: ''};
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+  }
+
+  onNameChange(e) {
+    this.setState({
+      name: e.target.value
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>React and MongoDB Test Application</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="App-body">
+          <div className="tile input">
+            <p>Hello, please enter your name!</p>
+            <form onSubmit={this.onSubmit} >
+              <input type="text" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+              <input type="submit" value="Add Name" />
+            </form>
+          </div>
+          <div className="tile user">
+             <p>Welcome {this.state.name}!</p> 
+          </div>
+        </div>
       </div>
     );
   }
